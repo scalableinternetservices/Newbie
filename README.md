@@ -1,25 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Basic Idea - A credibility checker for news articles.
 
-Things you may want to cover:
+DIVISION OF WORK
+AWS Deployment and Rails backend configurations (SRE stuff)
+Front-end creation and integration with backend ---- SHASHWAT
 
-* Ruby version
+Linking of dataset with backend (through SQL) and allowing quick lookup for article data.
+(this takes in some text, and returns a list of (article_data, news_source_name) which closely match the input.---- ZHENHUA and WEILAN
 
-* System dependencies
+Create credibility score database, and come up with "credibility scoring" algorithm. (would possibly require machine learning) ---- RISHABH
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# newbie
