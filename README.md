@@ -2,7 +2,9 @@
 
 Basic Idea - A credibility checker for news articles.
 
+
 DIVISION OF WORK
+
 AWS Deployment and Rails backend configurations (SRE stuff)
 Front-end creation and integration with backend ---- SHASHWAT
 
