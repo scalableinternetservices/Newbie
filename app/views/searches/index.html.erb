@@ -28,6 +28,9 @@
           <td style="width: 100%; padding: 15px; text-align:center;" >
             <%= " \" #{sorted_search[i].text} \" " %>
           </td>
+          <td style="padding: 15px; text-align:center;">
+            <div class="heart"></div>
+          </td>
         <!--
         <td>< %= link_to 'Show', search %></td>
         <td>< %= link_to 'Edit', edit_search_path(search) %></td>
@@ -46,3 +49,5 @@
      <%= link_to 'Search', new_search_path, {:style => 'color:#594F4F;'}%>
    </button>
 </div>
+
+<br>
