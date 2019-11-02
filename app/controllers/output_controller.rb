@@ -1,2 +1,0 @@
-class OutputController < ApplicationController
-end

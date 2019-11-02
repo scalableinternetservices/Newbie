@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :searches
+
   get 'welcome/index'
-  #get '/articles', to: 'articles#index', as: 'article'
+  get '/searches', to: 'searches#index', as: 'search'
+  resources :searches
 
   #get '/articles/new', to: 'articles#new'
   #get '/articles/:id', to: 'articles#show'
