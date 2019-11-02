@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BlankApp</title>
+    <title>Aritcle Credibility Check</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+      span {display:block;}
+    </style>
   </head>
 
   <body>
@@ -19,7 +23,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse p-3 mb-2" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link bg-dark text-white" href="#">Home <span class="sr-only">(current)</span></a>
@@ -39,6 +43,9 @@
           </div>
         </li>
       </ul>
+      <button type="button" class="close btn text-white" aria-label="Close" data-toggle="tooltip" title="log out?">
+        <span aria-hidden="true" style="width:50px;">&times;</span>
+      </button>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

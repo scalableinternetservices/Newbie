@@ -2,7 +2,7 @@
 
 <h1 style="text-align:center">
   <!--<p style="font-family:Sans-serif;">News Feed Article<p>-->
-  <button type="button" style="font-family:Sans-serif;" class="btn btn-lg btn-danger" data-toggle="popover" title="Greetings!" data-content="Today it's a good day, eh?">
+  <button type="button" style="font-family:Sans-serif;" class="btn btn-lg btn-danger" data-toggle="tooltip" data-placement="right" title="Today it's a good day, eh?">
     NewsFeed Article
   </button>
 </h1>
@@ -13,7 +13,7 @@
   <thead>
     <tr>
       <th style="text-align:center; width:100px;" class="bg-warning">Score</th>
-      <th style="text-align:center; width:400px;" class="table-dark">Content</th>
+      <th style="text-align:center; " class="table-dark">Content</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,7 +21,7 @@
   <tbody>
     <% @searches.each do |search| %>
       <tr>
-        <td style="padding: 10px; text-align:center;" class="table-warning"><%= search.score %></td>
+        <td style="padding: 10px; text-align:center; font-weight:bold;" class="table-warning align-middle"><%= search.score %></td>
         <td style="width: 100%; padding: 15px; text-align:center;" class="table-secondary">
           <%= " \" #{search.text} \" " %>
         </td>
