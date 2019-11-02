@@ -1,45 +1,43 @@
 <p id="notice"><%= notice %></p>
+<div id="rcorner">
+  <h1 style="text-align:center">
+    <button type="button" style="font-family:Sans-serif; font-weight:bold;" class="btn btn-lg text-white" data-toggle="tooltip" data-placement="right" title="Today it's a good day, eh?">
+      News Feed Article
+    </button>
+  </h1>
 
-<h1 style="text-align:center">
-  <!--<p style="font-family:Sans-serif;">News Feed Article<p>-->
-  <button type="button" style="font-family:Sans-serif;" class="btn btn-lg btn-danger" data-toggle="tooltip" data-placement="right" title="Today it's a good day, eh?">
-    NewsFeed Article
-  </button>
-</h1>
+  <br>
 
-<br>
-
-<table class="table table-hover table-sm" style="width:400px;" align="center">
-  <thead>
-    <tr>
-      <th style="text-align:center; width:100px;" class="bg-warning">Score</th>
-      <th style="text-align:center; " class="table-dark">Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @searches.each do |search| %>
+  <table class="table table-hover table-sm" style="width:600px;" align="center">
+    <thead>
       <tr>
-        <td style="padding: 10px; text-align:center; font-weight:bold;" class="table-warning align-middle"><%= search.score %></td>
-        <td style="width: 100%; padding: 15px; text-align:center;" class="table-secondary">
-          <%= " \" #{search.text} \" " %>
-        </td>
+        <th style="text-align:center; width:100px; background:#45ADA8">Score</th>
+        <th style="text-align:center; " class="table-dark">Content</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @searches.each do |search| %>
+        <tr>
+          <td style="padding: 10px; text-align:center; font-weight:bold; background:#9DE0AD" class="align-middle"><%= search.score %></td>
+          <td style="width: 100%; padding: 15px; text-align:center; background:#E5FCC2" >
+            <%= " \" #{search.text} \" " %>
+          </td>
         <!--
         <td>< %= link_to 'Show', search %></td>
         <td>< %= link_to 'Edit', edit_search_path(search) %></td>
         <td>< %= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         -->
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
 
 <br>
 
-<!-- <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>-->
 <div class="text-center">
-   <button type="button" class="btn btn-primary">
+   <button type="button" id="butt" >
      <%= link_to 'Search', new_search_path, {:style => 'color:#FFFFFF;'}%>
    </button>
  </div>
