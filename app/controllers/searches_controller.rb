@@ -1,6 +1,9 @@
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
 
+  #make sure the article score is valid
+  before_action :check_score, only: [:new, :create]
+
   # GET /searches
   # GET /searches.json
   def index
@@ -40,7 +43,7 @@ class SearchesController < ApplicationController
   # PATCH/PUT /searches/1
   # PATCH/PUT /searches/1.json
   def update
-    respond_to do |format|  
+    respond_to do |format|
       if @search.update(search_params)
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }
         format.json { render :show, status: :ok, location: @search }
@@ -65,6 +68,12 @@ class SearchesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_search
       @search = Search.find(params[:id])
+    end
+
+    def check_score
+      @search = Search.new(search_params)
+      puts @search
+      puts
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

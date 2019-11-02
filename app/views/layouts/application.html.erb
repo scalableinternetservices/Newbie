@@ -19,6 +19,8 @@
         height: 550px;
         margin-left: auto;
         margin-right: auto;
+        width: fit-content;
+        height: fit-content;
       }
 
       #rcorner2 {
@@ -91,7 +93,7 @@
         </li>
       </ul>
       <button type="button" class="close btn text-white" aria-label="Close" data-toggle="tooltip" title="log out?">
-        <span aria-hidden="true" style="width:70px;">&times;</span>
+        <span aria-hidden="true" style="width:20px;">&times;</span>
       </button>
       <!--
       <form class="form-inline my-2 my-lg-0">
@@ -99,7 +101,8 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       -->
-      <%= image_tag("cutecute.jpg", size:"40x40", class: "rounded-circle") %>
+      <span style="width:25px;"></span>
+      <span style="width:70px;"><%= image_tag("cutecute.jpg", size:"40x40", class: "rounded-circle") %></span>
     </div>
   </nav>
 
