@@ -8,10 +8,10 @@
 
   <br>
 
-  <table class="table table-hover table-sm" style="width:600px;" align="center">
+  <table class="table table-hover table-bordered table-sm" style="width:600px;" align="center">
     <thead>
       <tr>
-        <th style="text-align:center; width:100px; background:#45ADA8">Score</th>
+        <th style="text-align:center; width:100px;" class="table-warning ">Score</th>
         <th style="text-align:center; " class="table-dark">Content</th>
       </tr>
     </thead>
@@ -19,8 +19,8 @@
     <tbody>
       <% @searches.each do |search| %>
         <tr>
-          <td style="padding: 10px; text-align:center; font-weight:bold; background:#9DE0AD" class="align-middle"><%= search.score %></td>
-          <td style="width: 100%; padding: 15px; text-align:center; background:#E5FCC2" >
+          <td style="padding: 10px; text-align:center; font-weight:bold;" class="align-middle"><%= search.score %></td>
+          <td style="width: 100%; padding: 15px; text-align:center;" >
             <%= " \" #{search.text} \" " %>
           </td>
         <!--
