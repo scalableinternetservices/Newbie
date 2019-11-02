@@ -40,7 +40,7 @@ class SearchesController < ApplicationController
   # PATCH/PUT /searches/1
   # PATCH/PUT /searches/1.json
   def update
-    respond_to do |format|
+    respond_to do |format|  
       if @search.update(search_params)
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }
         format.json { render :show, status: :ok, location: @search }

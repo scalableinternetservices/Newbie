@@ -13,6 +13,7 @@
       #rcorner {
         border-radius: 25px;
         background: #355C7D;
+        background: #A5CAD2;
         padding: 20px;
         width: 800px;
         height: 550px;
@@ -20,8 +21,24 @@
         margin-right: auto;
       }
 
+      #rcorner2 {
+        border-radius: 25px;
+        background: #E1F5C4;
+        padding: 20px;
+        width: 550px;
+        height: 420px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .center {
+        margin-right:auto;
+        width: 50%;
+        padding: 10px;
+      }
+
       #butt {
-        padding: 15px 32px;
+        padding: 15px 30px;
         border-radius: 12px;
         background: #9DE0AD;
       }
@@ -29,21 +46,17 @@
       span {display:block;}
 
       table {
-        border: 1px solid #355C7D;
+      border: 1px solid #355C7D;
       border-collapse: separate;
       border-left: 0;
       border-radius: 4px;
       border-spacing: 0px;
       }
 
-      image_tag {
-        border-radius: 100%;
-      }
-
     </style>
   </head>
 
-  <body>
+  <body style="background-color:#BCE6FF;">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <a class="navbar-brand bg-dark text-white font-weight-bold" style="font-size:30px;" href="#">
         Newbie
@@ -56,6 +69,11 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link bg-dark text-white" href="#">Home <span class="sr-only">(current)</span></a>
+            <!--
+            <p class="nav-link bg-dark text-white">
+            <span>< %= link_to 'Home', searches_path, {:style => 'color:#FFFFFF;'}%></span>
+            </p>
+            -->
           </li>
           <li class="nav-item">
             <a class="nav-link bg-dark text-white" href="#">Link</a>
@@ -73,7 +91,7 @@
         </li>
       </ul>
       <button type="button" class="close btn text-white" aria-label="Close" data-toggle="tooltip" title="log out?">
-        <span aria-hidden="true" style="width:50px;">&times;</span>
+        <span aria-hidden="true" style="width:70px;">&times;</span>
       </button>
       <!--
       <form class="form-inline my-2 my-lg-0">
