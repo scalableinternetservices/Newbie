@@ -1,8 +1,8 @@
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
 
-  #make sure the article score is valid
-  before_action :check_score, only: [:new, :create]
+  #these actions wont need login
+  #skip_before_action :require_login, only: [:new, :create, :index]
 
   # GET /searches
   # GET /searches.json
@@ -70,10 +70,11 @@ class SearchesController < ApplicationController
       @search = Search.find(params[:id])
     end
 
-    def check_score
-      @search = Search.new(search_params)
-      puts @search
-      puts
+    def require_login
+      unless logged_in?
+        flash[:error] = "You must be logged in to access this section."
+        redirect_to new_login_url
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
