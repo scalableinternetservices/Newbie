@@ -29,9 +29,14 @@ class SearchesController < ApplicationController
   def create
     @search = Search.new(search_params)
 
+    #for testing, default score value 66
+    @search.score = 100 if @search.score.nil?
+
+
     respond_to do |format|
       if @search.save
-        format.html { redirect_to @search, notice: 'Search was successfully created.' }
+        #format.html { redirect_to @search, notice: 'Search was successfully created.' }
+        format.html { redirect_to "/searches/#{@search.id}", notice: 'Search was successfully created.' }
         format.json { render :show, status: :created, location: @search }
       else
         format.html { render :new }

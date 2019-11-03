@@ -1,9 +1,29 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" style="text-align:center;"><%= notice %></p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @search.text %>
-</p>
+<br>
 
-<%= link_to 'Edit', edit_search_path(@search) %> |
-<%= link_to 'Back', searches_path %>
+<div class="card kard" style="width: 18rem;">
+  <div class="card-img-top Box" style="text-align:center; font-size:60px; background-color:#F9CDAD;">
+    <%= @search.score %>
+  </div>
+  <br>
+  <div class="card-body kard-body">
+    <p class="card-text"><%= "\" #{@search.text} \"" %></p>
+  </div>
+</div>
+
+<div onclick="myFunction(this)" class="heart"></div>
+
+
+
+<!-- < %= link_to 'Edit', edit_search_path(@search) %> -->
+
+<div class="text-center">
+   <button type="button" id="butt" style="padding:15px 23px;">
+     <%= link_to 'Continue', new_search_path, {:style => 'color:#594F4F;'}%>
+   </button>
+   <div class="divider"></div>
+   <button type="button" id="butt">
+     <%= link_to 'Home', searches_path, {:style => 'color:#594F4F;'}%>
+   </button>
+</div>
