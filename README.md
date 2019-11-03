@@ -1,5 +1,10 @@
 # README
 
+|Team Member | Github | Email | Photo |
+|------------|--------|-------|-------|
+| Zhenhua Tan| wahjay |hotan38@gmail.com| Google potato|
+
+
 Basic Idea - A credibility checker for news articles.
 
 
