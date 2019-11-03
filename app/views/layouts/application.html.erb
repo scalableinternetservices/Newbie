@@ -68,17 +68,20 @@
         transform: translate(-50%, -50%);
         background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
         cursor: pointer;
+        animation: fave-heart both;
       }
 
-      .heart:active {
+      .heart:active{
         background-position: -2800px 0;
-        transition: background 0.2s steps(28);
-        animation: fave-heart 0.2s steps(28) forward;
+        animation: 0.2s steps(28) fave-heart;
+        animation-fill-mode: forwards;
       }
 
       @keyframes fave-heart {
         0% { background-position: 0 0; }
-        100% { background-position: -2800px 0; }
+        100% {
+          background-position: -2800px 0;
+        }
       }
 
     </style>
