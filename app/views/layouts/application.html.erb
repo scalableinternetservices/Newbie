@@ -71,6 +71,19 @@
         animation: fave-heart both;
       }
 
+      .emptyheart {
+        text-align:center;
+        width: 100px;
+        position: relative;
+        height: 5em;
+        align-items: center;
+        bottom: -30px;
+        left: 50%;
+        background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+      }
+
       .heart:active{
         background-position: -2800px 0;
         animation: 0.2s steps(28) fave-heart;
@@ -85,6 +98,23 @@
       }
 
     </style>
+
+    <script>
+      function myFunction(x) {
+        if(x.classList.item(0) == "heart" && x.classList.length == 1) {
+          x.classList.add("emptyheart");
+        }
+        else if (x.classList.length > 1) {
+          x.classList.replace("heart","emptyheart");
+        }
+
+        else{
+          x.classList.replace("emptyheart","heart");
+        }
+      }
+
+    </script>
+
   </head>
 
   <body style="background-color:#BCE6FF;">
