@@ -23,4 +23,17 @@ class ApplicationController < ActionController::Base
     	user.permit(:name, :password, :password_confirmation, :current_password)
     end
   end
+
+  layout :layout_by_resource
+
+  protected
+
+  def layout_by_resource
+    if devise_controller?
+      "devise"
+    else
+      "application"
+    end
+  end
+
 end

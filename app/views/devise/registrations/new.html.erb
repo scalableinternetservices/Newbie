@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag 'application' %>
+<%= stylesheet_link_tag "auth", :media => "all" %>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
   <div class="container">
@@ -37,9 +37,12 @@
         </div>
         <br>
         <button class="btn" type="button"><%= f.button :submit, "Sign up" %></button>
+        <%= render "devise/shared/links" %>
     </form>
 </div>
 </div>
 <% end %>
+
+
 
 

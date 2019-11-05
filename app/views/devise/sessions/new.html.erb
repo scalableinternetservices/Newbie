@@ -1,21 +1,43 @@
-<%= stylesheet_link_tag 'application' %>
-<h2>Log in</h2>
-
+<%= stylesheet_link_tag "auth", :media => "all" %>
+<h1 align="center">Login</h1>
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  
+  <div class="container">
+    <div class="user">
+    <header class="user__header">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+        <h1 class="user__title">Welcome to credibility check</h1>
+    </header>
+    <br>
+    <form class="form">
+        <div class="form__group">
+          <%= f.input :email,
+                       required: false,
+                       autofocus: true,
+                       input_html: { autocomplete: "email", class: "form-control" } %>
+        </div>
+        <br>
+        <div class="form__group">
+          <%= f.input :password,
+                      required: false,
+                      input_html: { autocomplete: "current-password", class: "form-control" } %>
+        </div>
+        <div class="form__group">              
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+        <br>
+        <button class="btn" type="button"><%= f.button :submit, "Log in" %></button>
+         <%= render "devise/shared/links" %>
+      </div>
   </div>
+</form>
+</div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
+  
+
+
+       
 <% end %>
 
-<%= render "devise/shared/links" %>
+
