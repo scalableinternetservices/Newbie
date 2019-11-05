@@ -2,21 +2,25 @@ $font-family:   "verdana";
 $font-size:     15px;
 $color-primary: #9DE0AD;
 
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/*
 body {
     font-family: $font-family;
     font-size: $font-size;
+    //font-size: 30px;
     background-size: 200% 200% !important;
     animation: move 10s ease infinite;
     transform: translate3d(0, 0, 0);
     //background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
     height: 100vh
 }
+*/
 
 .user {
     width: 90%;
