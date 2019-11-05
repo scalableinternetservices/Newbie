@@ -1,6 +1,7 @@
 <%- if controller_name != 'sessions' %>
-  <button class="btn" type="button">
-  <%= link_to "Log in", new_session_path(resource_name) %><br /></button>
+  <button type="button" class="btn">
+  <%= link_to "Log in", new_session_path(resource_name), {:style => 'color:#FFFFFF;'}%><br />
+</button>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>

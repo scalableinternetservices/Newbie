@@ -15,34 +15,27 @@
                 autofocus: true,
                 input_html: { autocomplete: "username", class: "form-control" }%>
         </div>
-        <br>
         <div class="form__group">
             <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email", class: "form-control"  }%>
         </div>
-        <br>
         <div class="form__group">
             <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password", class: "form-control"  } %>
         </div>
-        <br>
         <div class="form__group">
         <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password", class: "form-control"  } %>
         </div>
-        <br>
-        <button class="btn" type="button"><%= f.button :submit, "Sign up" %></button>
+        <button type="button" class="btn"><%= f.button :submit, "Sign up" %></button>
+        <span class="divider"></span>
         <%= render "devise/shared/links" %>
     </form>
 </div>
 </div>
 <% end %>
-
-
-
-
