@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   protected
 
   def configure_permitted_parameters
@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+=begin
   layout :layout_by_resource
 
   protected
@@ -35,5 +36,5 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
-
+=end
 end
