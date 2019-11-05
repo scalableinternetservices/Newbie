@@ -198,6 +198,7 @@
           <li class="nav-item">
             <a class="nav-link bg-dark text-white" href="/searches/new">Search</a>
           </li>
+          <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle bg-dark text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
@@ -208,6 +209,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Friends</a>
           </div>
+        <% end %>
         </li>
       </ul>
         <ul class="navbar-nav ml-auto">
