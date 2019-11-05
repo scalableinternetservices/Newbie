@@ -5,12 +5,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'auth', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <body>
-    <style>
+
+      <style>
       #rcorner {
         border-radius: 25px;
         background: #A5CAD2;
@@ -162,11 +163,7 @@
       <span class="navbar-brand bg-dark text-white font-weight-bold" style="font-size:30px;" href="#">
         Newbie
       </span>
-      <!--
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      -->
+      
 
       <span style="width:70px;">
         <%= image_tag("newbie_logo2", size:"50x50", class: "rounded float-left") %>
@@ -191,52 +188,25 @@
             <a class="dropdown-item" href="#">Friends</a>
           </div>
         </li>
-      </ul>
-        <!-- <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path %></li>
-        <% if user_signed_in? %>
-          <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li class="nav-item"><%= link_to "Log In", new_user_session_path %></li>
-        <% end %>
-      </ul> -->
 
       <!-- Need to implement profile later -->      
 
-      <button type="button" class="close btn text-white" aria-label="Close" data-toggle="tooltip" title="log out?">
+      <!-- <button type="button" class="close btn text-white" aria-label="Close" data-toggle="tooltip" title="log out?">
         <span aria-hidden="true" style="width:20px;">&times;</span>
-      </button>
-      <!--
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      -->
-      <span style="width:25px;"></span>
+      </button> -->
+      
+      <!-- <span style="width:25px;"></span>
       <span style="width:25px; font-family:verdana; color:white">Thanos</span>
       <span style="width:45px;"></span>
       <span style="width:60px;">
         <%= image_tag("cutecute.jpg", size:"40x40", class: "rounded-circle") %>
-      </span>
+      </span> -->
     </div>
   </nav>
 
-<!--
-  <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="cool">
-  Feature 1
-  </button>
-  <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="dope">
-  Feature 2
-  </button>
-  <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="noice">
-  Feature 3
-  </button>
-  <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="yep">
-  Feature 4
-  </button>
--->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    
     <%= yield %>
 
     <br><br><br><br><br><br>
