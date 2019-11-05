@@ -24,16 +24,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  layout :layout_by_resource
+  # layout :layout_by_resource
 
-  protected
+  # protected
 
-  def layout_by_resource
-    if devise_controller?
-      "devise"
-    else
-      "application"
-    end
-  end
+  # def layout_by_resource
+  #   if devise_controller?
+  #     "devise"
+  #   else
+  #     "application"
+  #   end
+  # end
 
 end
