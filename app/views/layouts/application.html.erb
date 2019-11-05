@@ -193,15 +193,17 @@
         </li>
       </ul>
         <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, {:style => 'color:grey;'} %></li>
+        <li><span class="divider" style="width:10px;"></span></li>
         <% if user_signed_in? %>
           <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li class="nav-item"><%= link_to "Log In", new_user_session_path %></li>
+          <li class="nav-item"><%= link_to "Log In", new_user_session_path, {:style => 'color:grey;'} %></li>
         <% end %>
+        <li><span class="divider" style="width:10px;"></span></li>
       </ul>
 
-      <!-- Need to implement profile later -->      
+      <!-- Need to implement profile later -->
 
       <button type="button" class="close btn text-white" aria-label="Close" data-toggle="tooltip" title="log out?">
         <span aria-hidden="true" style="width:20px;">&times;</span>

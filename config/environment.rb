@@ -4,6 +4,7 @@
 # # Initialize the Rails application.
 # Rails.application.initialize!
 
+=begin
 const { environment } = require('@rails/webpacker')
 
 const webpack = require('webpack')
@@ -16,3 +17,7 @@ environment.plugins.append('Provide',
 )
 
 module.exports = environment
+=end
+require_relative 'application'
+
+Rails.application.initialize!
