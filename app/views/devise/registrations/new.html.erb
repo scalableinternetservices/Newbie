@@ -1,0 +1,45 @@
+<%= stylesheet_link_tag 'application' %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+  <div class="container">
+    <div class="user">
+    <header class="user__header">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+        <h1 class="user__title">Welcome to credibility check</h1>
+    </header>
+    <br>
+    <form class="form">
+        <div class="form__group">
+            <%= f.input :user_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "username", class: "form-control" }%>
+        </div>
+        <br>
+        <div class="form__group">
+            <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email", class: "form-control"  }%>
+        </div>
+        <br>
+        <div class="form__group">
+            <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password", class: "form-control"  } %>
+        </div>
+        <br>
+        <div class="form__group">
+        <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password", class: "form-control"  } %>
+        </div>
+        <br>
+        <button class="btn" type="button"><%= f.button :submit, "Sign up" %></button>
+    </form>
+</div>
+</div>
+<% end %>
+
+

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-
+  root 'searches#index'
+  devise_for :users
   get 'welcome/index'
   get '/searches', to: 'searches#index', as: 'search'
   resources :searches

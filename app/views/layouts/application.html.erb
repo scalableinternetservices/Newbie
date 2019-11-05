@@ -9,6 +9,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <body>
     <style>
       #rcorner {
         border-radius: 25px;
@@ -191,6 +192,17 @@
           </div>
         </li>
       </ul>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path %></li>
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to "Log In", new_user_session_path %></li>
+        <% end %>
+      </ul>
+
+      <!-- Need to implement profile later -->      
+
       <button type="button" class="close btn text-white" aria-label="Close" data-toggle="tooltip" title="log out?">
         <span aria-hidden="true" style="width:20px;">&times;</span>
       </button>
@@ -223,6 +235,8 @@
   Feature 4
   </button>
 -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
 
     <br><br><br><br><br><br>
