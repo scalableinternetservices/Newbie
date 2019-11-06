@@ -7,16 +7,22 @@ class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
   def index
+    @user = current_user
+    #@user = User.find(1)
     @searches = Search.all
   end
 
   # GET /searches/1
   # GET /searches/1.json
   def show
+    @user = current_user
+    #@user = User.find(params[:user_id])
   end
 
   # GET /searches/new
   def new
+    @user = current_user
+    #@user = User.find(params[:user_id])
     @search = Search.new
   end
 
@@ -27,7 +33,12 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
-    @search = Search.new(search_params)
+    @user = User.find(params[:user_id])
+    #@user = current_user
+    #@search = Search.new(search_params)
+    @search = @user.searches.create(search_params)
+
+    #p @user.searches.create(search_params)
 
     #for testing, default score value 66
     @search.score = 100 if @search.score.nil?

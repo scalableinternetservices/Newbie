@@ -20,10 +20,12 @@
 
 <div class="text-center">
    <button type="button" id="butt" style="padding:15px 23px;">
-     <%= link_to 'Continue', new_search_path, {:style => 'color:#594F4F;'}%>
+     <%= link_to 'Continue', "/users/#{@user.id}/searches/new", {:style => 'color:#594F4F;'}%>
+     <!-- new_search_path -->
    </button>
    <div class="divider"></div>
    <button type="button" id="butt">
-     <%= link_to 'Home', searches_path, {:style => 'color:#594F4F;'}%>
+     <%= link_to 'Home', "/searches", {:style => 'color:#594F4F;'}%>
+     <!-- searches_path -->
    </button>
 </div>
