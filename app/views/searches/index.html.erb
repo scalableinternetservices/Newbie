@@ -48,8 +48,10 @@
 
 <div class="text-center">
    <button type="button" id="butt" >
-     <%= link_to 'Search', new_search_path, {:style => 'color:#594F4F;'}%>
+     <%= link_to 'Search', "/users/#{current_user.id}/searches/new", {:style => 'color:#594F4F;'}%>
    </button>
 </div>
+
+<!--new_search_path  -->
 
 <br>

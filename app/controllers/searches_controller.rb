@@ -27,7 +27,14 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
+    @user = User.find(params[:user_id])
+    #@user = current_user
     @search = Search.new(search_params)
+    #@search = @user.searches.create(search_params)
+
+    #p @user.searches.create(search_params)
+
+    p @search.user
 
     #for testing, default score value 66
     @search.score = 100 if @search.score.nil?
