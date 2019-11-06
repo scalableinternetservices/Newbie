@@ -245,7 +245,13 @@
         </span>
         <span style="width:45px;"></span>
         <span style="width:40px;">
-          <%= image_tag("user-icon.jp2", size:"40x40", class: "rounded-circle") %>
+          <% if current_user.avatar.attached? %>
+            <img src="<%=(url_for(current_user.avatar))%>" class="rounded-circle" style="width:40px;height:40px;>
+          <% else %>
+            <%= image_tag gravatar_image_url(current_user.email, size: 40) %>
+          <% end %>
+          <!-- <%= image_tag user_avatar(current_user, 40), class: "rounded-circle" %> -->
+          <!-- <%= image_tag("user-icon.jp2", size:"40x40", class: "rounded-circle") %> -->
         </span>
 
       <% end %>

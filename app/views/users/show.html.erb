@@ -1,3 +1,33 @@
 <h1>This is a profile page!</h1>
-<h2><%= @user.user_name %></h2>
-<h3><%= link_to "Back", root_path %></h3>
+
+<center>
+<div class="container">
+
+		<div class="profile">
+
+			<div class="profile-image">
+
+				<% if @user.avatar.attached? %>
+				<img src="<%=(url_for(@user.avatar))%>" class="rounded-circle" style="width:140px;height:140px;>
+			<% else %>
+	        	<%= image_tag gravatar_image_url(current_user.email, size: 140)  %>
+			<% end %>
+
+			</div>
+
+			<div class="profile-user-settings">
+
+				<h1 class="profile-user-name"><%= @user.user_name %></h1>
+
+				<button class="btn profile-edit-btn"><%= link_to "Edit Profile", edit_user_registration_path %></button>
+
+				<button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+
+			</div>
+
+		</div>
+		<!-- End of profile section -->
+
+	</div>
+	<!-- End of container -->
+</center>

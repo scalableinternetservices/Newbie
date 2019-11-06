@@ -74,3 +74,5 @@ gem 'simple_form', '5.0.1'
 gem 'jquery-rails'
 
 gem 'devise', '4.7.1'
+
+gem 'gravatar_image_tag', '~> 1.2'
