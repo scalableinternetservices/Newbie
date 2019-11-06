@@ -74,3 +74,5 @@ gem 'simple_form', '5.0.1'
 gem 'jquery-rails'
 
 gem 'devise', '4.7.1'
+
+gem "loofah", ">= 2.3.1"
