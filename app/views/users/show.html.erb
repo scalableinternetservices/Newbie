@@ -1,3 +1,18 @@
-<h1>This is a profile page!</h1>
-<h2><%= @user.user_name %></h2>
-<h3><%= link_to "Back", root_path %></h3>
+<h1><%= @user.user_name %> Profile</h1>
+
+<div>
+  <h3>Search History</h3>
+  <% @searches.each do |search| %>
+  <ul>
+    <li><%= search.text %></li>
+  </ul>
+  <% end %>
+
+  <% if @searches.size == 0 %>
+    <p>You haven't searched anything yet.</p>
+  <% end %>
+</div>
+
+<br>
+<%= link_to "Back", root_path %>
+<br><br><br><br><br><br><br><br><br><br><br>

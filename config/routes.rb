@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #get 'welcome/index'
   #get '/searches', to: 'searches#index', as: 'search'
 
+  devise_for :users
 
   resources :users do
     resources :searches
@@ -10,16 +11,15 @@ Rails.application.routes.draw do
 
 
   root 'searches#index'
-  
-  root 'searches#index'
-  devise_for :users
-  resources :users
+
+  get 'users/:id', to: 'searches#index'
+
+  #get 'users', to: 
+
   get 'users/show'
-  
+
   get 'welcome/index'
 
-
-  #get '/users/:id', to: 'searches#index'
   get '/searches', to: 'searches#index', as: 'search'
 
   get '/users/:id/searches/new', to: 'searches#new'
