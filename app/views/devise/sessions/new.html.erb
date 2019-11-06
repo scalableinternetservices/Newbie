@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "auth", :media => "all" %>
 <h1 align="center">Login</h1>
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
+
   <div class="container">
     <div class="user">
     <header class="user__header">
@@ -16,16 +16,14 @@
                        autofocus: true,
                        input_html: { autocomplete: "email", class: "form-control" } %>
         </div>
-        <br>
         <div class="form__group">
           <%= f.input :password,
                       required: false,
                       input_html: { autocomplete: "current-password", class: "form-control" } %>
         </div>
-        <div class="form__group">              
+        <div class="form__group">
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
-        <br>
         <button class="btn" type="button"><%= f.button :submit, "Log in" %></button>
          <%= render "devise/shared/links" %>
       </div>
@@ -34,10 +32,8 @@
 </div>
 </div>
 
-  
 
 
-       
+
+
 <% end %>
-
-
