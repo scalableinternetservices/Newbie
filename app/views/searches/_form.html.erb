@@ -2,7 +2,7 @@
 <div id="rcorner">
  <h2 style="text-align:center; color:white; font-family:Sans-serif;">Enter Text:</h2>
  <br>
- <%= form_with(model: search, url: "/users/#{current_user.id}/searches/#{search.id}",local: true) do |form| %>
+ <%= form_with(model: search,url: searches_new_path,local: true) do |form| %>
   <% if search.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(search.errors.count, "error") %> prohibited this search from being saved:</h2>

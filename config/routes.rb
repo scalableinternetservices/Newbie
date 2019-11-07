@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'users/:id', to: 'searches#index'
 
-  #get 'users', to: 
+  #get 'users', to:
 
   get 'users/show'
 
@@ -22,12 +22,11 @@ Rails.application.routes.draw do
 
   get '/searches', to: 'searches#index', as: 'search'
 
-  get '/users/:id/searches/new', to: 'searches#new'
+  get '/users/:id/searches/new', to: 'searches#create'
 
   get '/searches/new', to: 'searches#new'
 
-
-  get '/searches/new', to: 'searches#new'
+  post '/searches/new', to: 'searches#create'
 
   get '/searches/:id', to: 'searches#show'
 
