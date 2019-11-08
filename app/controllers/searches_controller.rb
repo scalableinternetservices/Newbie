@@ -36,7 +36,7 @@ class SearchesController < ApplicationController
     if current_user.nil?
       @search = Search.create(search_params)
       #all the public search without signing in will be marked with user_id equlas to 0
-      @search.user_id = 0
+      #@search.user_id = 0
     else
       @user = current_user
       @search = @user.searches.create(search_params)
