@@ -33,9 +33,12 @@
                 required: true,
                 input_html: { autocomplete: "new-password", class: "form-control"  } %>
         </div>
+        <div>
         <button type="button" class="btn"><%= f.button :submit, "Sign up" %></button>
-        <span class="divider"></span>
+        <!-- <span class="divider"></span> -->
         <%= render "devise/shared/links" %>
+    </div>
+    </div>
     </form>
 </div>
 </div>

@@ -187,7 +187,7 @@
       -->
 
       <span style="width:70px;">
-        <%= image_tag("newbie_logo2", size:"50x50", class: "rounded float-left") %>
+        <%= image_tag("newbie_logo2.png", size:"50x50", class: "rounded float-left") %>
       </span>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -220,19 +220,6 @@
           <% end %>
         </ul>
 
-        <!-- <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path %></li>
-        <% if user_signed_in? %>
-          <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li class="nav-item"><%= link_to "Log In", new_user_session_path, {:style => 'color:grey;'} %></li>
-        <% end %>
-        <li><span class="divider" style="width:10px;"></span></li>
-      </ul>
-      </ul> -->
-
-      <!-- Need to implement profile later -->
-
       <% if user_signed_in? %>
         <span class="close text-white" aria-label="Close" data-toggle="tooltip" title="log out?">
           <%= link_to "X", destroy_user_session_path, method: :delete, style: 'color:#FFFFFF; font-size:17px;'%>
@@ -240,18 +227,16 @@
         <span style="width:25px;"></span>
         <span style="width:50px; font-family:verdana; color:white">
           <% if current_user %>
-            <%= link_to current_user.user_name, users_show_path(current_user.id) %>
+            <!-- <%= link_to current_user.user_name, users_show_path(current_user.id) %> -->
           <% end %>
         </span>
         <span style="width:45px;"></span>
         <span style="width:40px;">
           <% if current_user.avatar.attached? %>
-            <img src="<%=(url_for(current_user.avatar))%>" class="rounded-circle" style="width:40px;height:40px;>
+            <a href="/users/show(.:format)" data-toggle="tooltip" :title=<% current_user.user_name %>><img src="<%=(url_for(current_user.avatar))%>" class="rounded-circle" style="width:40px;height:40px;"></a>
           <% else %>
-            <%= image_tag gravatar_image_url(current_user.email, size: 40) %>
+            <a href="/users/show(.:format)"><%= image_tag("user-icon.jp2", size:"40x40", class: "rounded-circle") %></a>
           <% end %>
-          <!-- <%= image_tag user_avatar(current_user, 40), class: "rounded-circle" %> -->
-          <!-- <%= image_tag("user-icon.jp2", size:"40x40", class: "rounded-circle") %> -->
         </span>
 
       <% end %>
