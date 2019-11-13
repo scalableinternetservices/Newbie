@@ -1,0 +1,22 @@
+.d-md-flex{
+    padding: 0px;
+   	height: fit-content
+}
+
+.col-sm-4 {
+	height: 1000px;
+    background-color: #FFAEAD;
+}
+
+.col-sm-8 {
+	height: 1000px;
+    background-color: #81F4E1;
+}
+
+.col-sm-4 {
+    border-radius: 15px 0 0 15px;
+}
+
+.col-sm-8 {
+    border-radius: 0 15px 15px 0;
+}

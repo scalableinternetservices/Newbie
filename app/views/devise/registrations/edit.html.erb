@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<center><h2>Edit <%= resource_name.to_s.humanize %></h2></center>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -10,9 +10,7 @@
         <h1 class="user__title">Welcome to credibility check</h1>
     </header>
     <br>
-    <form class="form">
-    
-
+    <form class="form"> 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
@@ -21,16 +19,17 @@
       <div class="row">
         <div class="col-sm-4">
           <% if current_user.avatar.attached? %>
-            <img src="<%=(url_for(current_user.avatar))%>" class="rounded-circle" style="width:100px;height:100px;>
+            <img src="<%=(url_for(current_user.avatar))%>" class="rounded-circle" style="width:100px;height:100px;">
           <% else %>
-            <%= image_tag gravatar_image_url(current_user.email, size: 100), class: "rounded-circle"%>
-          <% end %>    
+            <%= image_tag("user-icon.jp2", size:"40x40", class: "rounded-circle") %>
+          <% end %>
         </div>
         <div class="col-sm-8">
           <%= f.input :avatar, as: :file %>
         </div>
       </div>
     </div>
+  <br/>
 
     <div class="form__group">
       <%= f.input :email, required: true, autofocus: true %>
