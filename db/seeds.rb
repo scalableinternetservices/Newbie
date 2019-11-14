@@ -1,7 +1,27 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'jsonl'
+
+filename = ENV["SEED_FILE_DIR"]
+dirname = File.dirname(filename)
+`split -l 20000 #{filename} #{filename}.parts.`
+Dir.chdir(dirname)
+parts = Dir["#{filename}.parts.*"]
+json = ''
+parts.each do |partname|
+  json += File.read(partname)
+  records = JSONL.parse(json)
+  to_save = []
+  records.each do |record|
+    x = {}
+    x["title"] = record["title"]
+    x["body"] = record["text"]
+    x["date_published"] = record["date"]
+    x["summary"] = record["summary"]
+    to_save.append(x)
+  end
+  puts(to_save)
+  Article.create(to_save)
+  File.delete(partname)
+end
+
+
+

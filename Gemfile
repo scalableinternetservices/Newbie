@@ -79,4 +79,4 @@ gem "loofah", ">= 2.3.1"
 gem 'gravatar_image_tag', '~> 1.2'
 
 gem "pg_search"
-
+gem "jsonl"
