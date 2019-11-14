@@ -16,6 +16,7 @@ parts.each do |partname|
     x["body"] = record["text"]
     x["date_published"] = record["date"]
     x["summary"] = record["summary"]
+    x["url"] = record["url"]
     to_save.append(x)
   end
   puts(to_save)
