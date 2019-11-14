@@ -6,6 +6,6 @@ class CreateSearches < ActiveRecord::Migration[6.0]
       t.timestamps
     end
     
-    change_column_null :user_id, true
+
   end
 end
