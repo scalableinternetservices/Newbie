@@ -78,3 +78,5 @@ gem 'devise', '4.7.1'
 gem "loofah", ">= 2.3.1"
 gem 'gravatar_image_tag', '~> 1.2'
 
+gem "pg_search"
+

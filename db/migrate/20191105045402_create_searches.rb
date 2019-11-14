@@ -5,7 +5,5 @@ class CreateSearches < ActiveRecord::Migration[6.0]
       t.references :user, null:true, foreign_key:true
       t.timestamps
     end
-    
-    change_column_null :user_id, true
   end
 end
