@@ -113,16 +113,65 @@ class SearchesController < ApplicationController
       counter = 0
       matching_ids = []
       for article in matching_articles do
-        total_score += article.pg_search_rank
+        next if article.pg_search_rank < 0.4
+        publication_score = get_publication_score(article.url)
+        total_score += article.pg_search_rank * publication_score
         counter += 1
         matching_ids.append(article.id)
       end
+      puts(matching_ids)
 
       saver = 0
       saver = total_score / counter if counter != 0
       results["score"] = saver * 100
       results["matching_ids"] = matching_ids
       results
+    end
+
+    def get_publication_name(url)
+      if url.nil?
+        puts("URL NOT PARSABLE")
+        return "unknown"
+      end
+      url.split('www.')[1].split('.')[0]
+    end
+
+    def get_publication_score(url)
+      publication_name = get_publication_name(url)
+      publication_score_mapping = get_publication_score_mapping()
+      return 0.5 if !publication_score_mapping.has_key?(publication_name.to_sym)
+      return publication_score_mapping[publication_name.to_sym]
+    end
+
+    def get_publication_score_mapping()
+      {
+        "wsj": 0.81,
+        "nytimes": 0.78,
+        "bloomberg": 0.8,
+        "bbc": 0.9,
+        "washingtonpost": 0.6,
+        "usatoday": 0.2,
+        "time": 0.7,
+        "thesun": 0.1,
+        "thepostgame": 0.13,
+        "theguardian": 0.81,
+        "telegraph": 0.68,
+        "sfgate": 0.48,
+        "reuters": 0.74,
+        "people": 0.31,
+        "nypost": 0.48,
+        "nbc": 0.71,
+        "nbcnews": 0.71,
+        "msnbc": 0.71,
+        "mashable": 0.1,
+        "latimes": 0.69,
+        "forbes": 0.83,
+        "cnn": 0.68,
+        "cnbc": 0.71,
+        "buzzfeed": 0.11,
+        "aljazeera": 0.75,
+        "chicagotribune": 0.67
+      }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

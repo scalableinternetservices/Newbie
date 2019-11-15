@@ -105,7 +105,8 @@ CREATE TABLE public.articles (
     summary text,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    tsv tsvector
+    tsv tsvector,
+    url character varying
 );
 
 
@@ -382,6 +383,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191106060622'),
 ('20191106065728'),
 ('20191114210012'),
-('20191114210015');
+('20191114210015'),
 
 
