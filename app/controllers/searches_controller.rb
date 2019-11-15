@@ -52,6 +52,8 @@ class SearchesController < ApplicationController
     # GET SCORE FOR THIS SEARCH
     results = get_results(@search.text)
     @search.score = results["score"]
+    # results["urls"]
+    # results["matching_ids"]
 
     #for testing, default score value 66
     @search.score = 100 if @search.score.nil?
@@ -112,12 +114,14 @@ class SearchesController < ApplicationController
       
       counter = 0
       matching_ids = []
+      matching_urls = []
       for article in matching_articles do
         next if article.pg_search_rank < 0.4
         publication_score = get_publication_score(article.url)
         total_score += article.pg_search_rank * publication_score
         counter += 1
         matching_ids.append(article.id)
+        matching_urls.append(article.url)
       end
       puts(matching_ids)
 
@@ -125,6 +129,7 @@ class SearchesController < ApplicationController
       saver = total_score / counter if counter != 0
       results["score"] = saver * 100
       results["matching_ids"] = matching_ids
+      results["urls"] = matching_urls
       results
     end
 
