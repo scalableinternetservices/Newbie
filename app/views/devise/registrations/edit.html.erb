@@ -21,7 +21,7 @@
           <% if current_user.avatar.attached? %>
             <img src="<%=(url_for(current_user.avatar))%>" class="rounded-circle" style="width:100px;height:100px;">
           <% else %>
-            <%= image_tag("user-icon.jp2", size:"40x40", class: "rounded-circle") %>
+            <%= image_tag("user-icon.jp2", size:"100x100", class: "rounded-circle") %>
           <% end %>
         </div>
         <div class="col-sm-8">
