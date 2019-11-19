@@ -15,9 +15,9 @@
 				<% if @user.avatar.attached? %>
 				<img src="<%=(url_for(@user.avatar))%>" class="rounded-circle" style="width:140px;height:140px">
 			<% else %>
-	        	<%= image_tag("user-icon.jp2", size:"200x200", class: "rounded-circle") %>
+	        	<%= image_tag("user-icon.jp2", size:"230x230", class: "rounded-circle") %>
 			<% end %>
-				
+
 
 			</div>
 
@@ -64,7 +64,7 @@
 	<center><h1>Search History</h1></center>
 	<% @searches.each do |search| %>
 	  <ul>
-	    <h2><li><%= search.text %></li></h2>
+	    <h2><li><%= search.text.split(/\s+/, 11)[0...10].join(' ') %></li></h2>
 	  </ul>
 	  <% end %>
 	  <% if @searches.size == 0 %>
@@ -72,9 +72,9 @@
 	  <% end %>
 	</div>
 </section>
-    	
+
 </div>
-    
+
 </div>
 </div>
 <!--
