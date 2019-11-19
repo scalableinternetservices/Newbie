@@ -22,7 +22,7 @@
     <p style="text-align:center; font-wight:bold;">Similar Articles:</p>
     <%  @similar_articles.each do |url, score|  %>
       <div style="float:left;">
-        score
+        <%= score %>
       </div>
       <%= link_to url[0..20], url, :title => "Similar article"  %>
     <% end %>
