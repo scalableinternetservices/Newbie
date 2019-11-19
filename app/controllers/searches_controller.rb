@@ -25,7 +25,7 @@ class SearchesController < ApplicationController
     #get scores first
     @scores = []
     @searche_ids.each do |id|
-       results = get_results(Aritcle.find(id).text)
+       results = get_results(Aritcle.find(id).body)
        @scores << results["score"]
     end
 
