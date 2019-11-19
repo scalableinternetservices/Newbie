@@ -52,11 +52,11 @@ class SearchesController < ApplicationController
     # GET SCORE FOR THIS SEARCH
     results = get_results(@search.text)
     @search.score = results["score"]
-    # results["urls"]
+    @urls = results["urls"]
     # results["matching_ids"]
 
     #for testing, default score value 66
-    @search.score = 100 if @search.score.nil?
+    #@search.score = 100 if @search.score.nil?
 
     respond_to do |format|
       if @search.save
@@ -111,7 +111,7 @@ class SearchesController < ApplicationController
       results = {}
       matching_articles = Article.search(search_text).with_pg_search_rank
       total_score = 0
-      
+
       counter = 0
       matching_ids = []
       matching_urls = []
