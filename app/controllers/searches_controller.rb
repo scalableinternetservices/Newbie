@@ -15,6 +15,28 @@ class SearchesController < ApplicationController
   # GET /searches/1.json
   def show
     @user = current_user
+    @search = Search.find(params[:id])
+    # GET similar URLS FOR THIS SEARCH
+    results = get_results(@search.text)
+    @urls = results["urls"]
+
+    @searche_ids = results["matching_ids"]
+
+    #get scores first
+    @scores = []
+    @searche_ids.each do |id|
+       results = get_results(Article.find(id).body)
+       @scores << results["score"]
+    end
+
+    #connect the urls with its corresponding score
+    @similar_articles = {}
+    @urls.each_with_index do | url, index|
+      @similar_articles[url] = @scores[index]
+    end
+
+    #sort the urls based on their scores
+    @similar_articles = @similar_articles.sort_by { |_key, value| -value }.to_h
   end
 
   # GET /searches/new

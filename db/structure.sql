@@ -11,7 +11,7 @@ SET row_security = off;
 
 SET default_tablespace = '';
 
-SET default_table_access_method = heap;
+SET default_with_oids = false;
 
 --
 -- Name: active_storage_attachments; Type: TABLE; Schema: public; Owner: -
@@ -103,10 +103,10 @@ CREATE TABLE public.articles (
     title text,
     body text,
     summary text,
+    url character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    tsv tsvector,
-    url character varying
+    tsv tsvector
 );
 
 
@@ -127,6 +127,38 @@ CREATE SEQUENCE public.articles_id_seq
 --
 
 ALTER SEQUENCE public.articles_id_seq OWNED BY public.articles.id;
+
+
+--
+-- Name: relationships; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.relationships (
+    id bigint NOT NULL,
+    follower_id integer,
+    followed_id integer,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: relationships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.relationships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: relationships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.relationships_id_seq OWNED BY public.relationships.id;
 
 
 --
@@ -229,6 +261,13 @@ ALTER TABLE ONLY public.articles ALTER COLUMN id SET DEFAULT nextval('public.art
 
 
 --
+-- Name: relationships id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.relationships ALTER COLUMN id SET DEFAULT nextval('public.relationships_id_seq'::regclass);
+
+
+--
 -- Name: searches id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -272,6 +311,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.articles
     ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: relationships relationships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.relationships
+    ADD CONSTRAINT relationships_pkey PRIMARY KEY (id);
 
 
 --
@@ -327,6 +374,27 @@ CREATE INDEX index_articles_on_tsv ON public.articles USING gin (tsv);
 
 
 --
+-- Name: index_relationships_on_followed_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_relationships_on_followed_id ON public.relationships USING btree (followed_id);
+
+
+--
+-- Name: index_relationships_on_follower_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_relationships_on_follower_id ON public.relationships USING btree (follower_id);
+
+
+--
+-- Name: index_relationships_on_follower_id_and_followed_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_relationships_on_follower_id_and_followed_id ON public.relationships USING btree (follower_id, followed_id);
+
+
+--
 -- Name: index_searches_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -351,7 +419,7 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING bt
 -- Name: articles tsvectorupdate; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON public.articles FOR EACH ROW EXECUTE FUNCTION tsvector_update_trigger('tsv', 'pg_catalog.english', 'title', 'body');
+CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON public.articles FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('tsv', 'pg_catalog.english', 'title', 'body');
 
 
 --
@@ -384,5 +452,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191106065728'),
 ('20191114210012'),
 ('20191114210015'),
+('20191119074725');
 
 

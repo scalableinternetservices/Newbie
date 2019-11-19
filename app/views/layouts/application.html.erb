@@ -223,12 +223,12 @@
 
       <% if user_signed_in? %>
         <span class="close text-white" aria-label="Close" data-toggle="tooltip" title="log out?">
-          <%= link_to "X", destroy_user_session_path, method: :delete, style: 'color:#FFFFFF; font-size:17px;'%>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, style: 'color:white; font-weight:normal; font-size: 17px;'%>
         </span>
         <span style="width:25px;"></span>
         <span style="width:50px; font-family:verdana; color:white">
           <% if current_user %>
-             <%= link_to current_user.user_name, users_show_path(current_user.id) %>
+             <%= link_to current_user.user_name, users_show_path(current_user.id), {:style => 'color:white;'} %>
           <% end %>
         </span>
         <span style="width:45px;"></span>
