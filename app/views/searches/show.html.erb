@@ -28,9 +28,9 @@
   <% else %>
     <%  @similar_articles.each do |url, score|  %>
       <div style="text-align:left; font-weight:bold;">
-        <%= score %>
+        <%= score.round %>
         <span class="divider"></span>
-        <%= link_to url[0..20], url, title: url  %>
+        <%= link_to url[0..28], url, title: url  %>
       </div>
     <% end %>
   <% end %>
