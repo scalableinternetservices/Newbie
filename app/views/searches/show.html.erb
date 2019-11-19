@@ -27,10 +27,10 @@
     <%= "No Similar Urls found." %>
   <% else %>
     <%  @similar_articles.each do |url, score|  %>
-      <div style="float:left;">
+      <div style="text-align:left; font-weight:bold;">
         <%= score %>
         <span class="divider"></span>
-        <%= link_to url[0..20], url, :title => "Similar article"  %>
+        <%= link_to url[0..20], url, title: url  %>
       </div>
     <% end %>
   <% end %>

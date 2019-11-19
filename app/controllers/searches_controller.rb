@@ -19,7 +19,13 @@ class SearchesController < ApplicationController
     # GET similar URLS FOR THIS SEARCH
     results = get_results(@search.text)
     @urls = results["urls"]
-    @scores = results["matching_ids"]
+    @searche_ids = results["matching_ids"]
+
+    #get scores first
+    @scores = []
+    @searche_ids.each do |id|
+      @scores << Search.find(id).score
+    end
 
     #connect the urls with its corresponding score
     @similar_articles = {}
