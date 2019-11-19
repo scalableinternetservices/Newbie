@@ -1,11 +1,6 @@
 require 'jsonl'
 
 dirname = File.join(File.dirname(__FILE__), 'seed')
-`split -l 20000 #{filename} #{filename}.parts.`
-Dir.chdir(dirname)
-parts = Dir["#{filename}.parts.*"]
-
-
 parts = Dir.entries(dirname).select {|f| !File.directory? f}
 json = ''
 parts.each do |partname|
@@ -22,8 +17,4 @@ parts.each do |partname|
     to_save.append(x)
   end
   Article.create(to_save)
-  File.delete(partname)
 end
-
-
-
