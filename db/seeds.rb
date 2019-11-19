@@ -18,3 +18,28 @@ parts.each do |partname|
   end
   Article.create(to_save)
 end
+
+# For user relationship test only
+# Users 
+# User.create!(user_name: "First User", 
+#              email: "test@gmail.com", 
+#              password: "helloworld", 
+#              password_confirmation: "helloworld")
+
+# 99.times do |n| 
+#   name = Faker::Name.name 
+#   email = "test-#{n+1}@gmail.com" 
+#   password = "password" 
+#   User.create!(user_name: name,
+#                email: email, 
+#                password: password, 
+#                password_confirmation: password) 
+# end
+
+# # Create following relationships.
+# users = User.all 
+# user = users.first 
+# following = users[2..50] 
+# followers = users[3..40] 
+# following.each { |followed| user.follow(followed) } 
+# followers.each { |follower| follower.follow(user) }

@@ -8,50 +8,9 @@
 <div class="col-sm-4 p-0 bg-indigo h-md-100">
     <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center panel widget light-widget panel-bd-top">
         <div class="logoarea pt-5 pb-5">
-
             <div class="profile">
-
-			<div class="profile-image">
-				<% if @user.avatar.attached? %>
-				<img src="<%=(url_for(@user.avatar))%>" class="rounded-circle" style="width:140px;height:140px">
-			<% else %>
-	        	<%= image_tag("user-icon.jp2", size:"230x230", class: "rounded-circle") %>
-			<% end %>
-
-
+            	<%= render 'users/shared/profile' %>
 			</div>
-
-			<div class="profile-user-settings">
-
-				<h1 class="profile-user-name"><%= @user.user_name %></h1>
-				<button class="btn profile-edit-btn"><%= link_to "Edit Profile", edit_user_registration_path %></button>
-
-			</div>
-
-			<div class="profile-stats">
-				<div class="row text-center m-t-20">
-                    <div class="col-lg-3 col-md-3 m-t-20">
-                        <h3 class="m-b-0 font-light">0</h3><small>Articles</small>
-                    </div>
-                    <div class="col-lg-3 col-md-3 m-t-20">
-                        <h3 class="m-b-0 font-light">0</h3><small>Followers</small>
-                    </div>
-                    <div class="col-lg-3 col-md-3 m-t-20">
-                        <h3 class="m-b-0 font-light">0</h3><small>Following</small>
-                    </div>
-                    <div class="col-lg-3 col-md-3 m-t-20">
-                        <h3 class="m-b-0 font-light">0</h3><small>Searches</small>
-                    </div>
-                </div>
-			</div>
-
-			<div class="divider"></div>
-			<div class="profile-bio">
-
-				<p><span class="profile-real-name">Your Real Name</span>Say Something...</p>
-
-			</div>
-		</div>
         </div>
     </div>
 </div>

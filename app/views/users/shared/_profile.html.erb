@@ -1,0 +1,50 @@
+<div class="profile-image">
+	<% if @user.avatar.attached? %>
+		<img src="<%=(url_for(@user.avatar))%>" class="rounded-circle" style="width:140px;height:140px">
+	<% else %>
+	   <%= image_tag("user-icon.jp2", size:"200x200", class: "rounded-circle") %>
+	<% end %>
+</div>
+<!-- End of profile-image -->
+
+<div class="profile-user-settings">
+	<h1 class="profile-user-name"><%= @user.user_name %></h1>
+	<button class="btn profile-edit-btn"><%= link_to "Edit Profile", edit_user_registration_path %></button>
+</div>
+<!-- End of profile-user-settings -->
+
+<% @user ||= current_user %>
+<div class="profile-stats">
+	<div class="row text-center m-t-20">
+        <div class="col-lg-3 col-md-3 m-t-20">
+            <h3 class="m-b-0 font-light">0</h3><small>Articles</small>
+        </div>
+        <div class="col-lg-3 col-md-3 m-t-20">
+            <h3 class="m-b-0 font-light">
+                <a href="<%= followers_user_path(@user) %>"><%= @user.followers.count %></a>
+            </h3>
+            <small>Followers</small>
+        </div>
+        <div class="col-lg-3 col-md-3 m-t-20">
+            <h3 class="m-b-0 font-light">
+                <a href="<%= following_user_path(@user) %>"><%= @user.following.count %></a>
+            </h3>
+            <small>Following</small>
+        </div>
+        <div class="col-lg-3 col-md-3 m-t-20">
+            <h3 class="m-b-0 font-light">
+                <%= @user.searches.count %>
+            </h3>
+            <small>Searches</small>
+        </div>
+    </div>
+</div>
+<!-- End of profile-stats -->
+
+<div class="divider"></div>
+
+<div class="profile-bio">
+	<p><span class="profile-real-name">Your Real Name</span>Say Something...</p>
+</div>
+<!-- End of profile-bio -->
+
