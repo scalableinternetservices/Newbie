@@ -19,7 +19,7 @@
     <%= "No Similar Urls found." %>
   <% else %>
     <%  @urls.each do |url|  %>
-      <%= url %>
+      <%= link_to url[0..20], url  %>
     <% end %>
   <% end %>
 </div>
