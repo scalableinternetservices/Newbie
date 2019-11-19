@@ -15,7 +15,9 @@
 <div onclick="myFunction(this)" class="heart"></div>
 
 <div>
-  <%= @urls %>
+  <% if @urls.nil? %>
+    <%= "No Similar Urls found." %>
+  <% end %>
 </div>
 
 <!-- < %= link_to 'Edit', edit_search_path(@search) %> -->
