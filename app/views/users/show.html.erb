@@ -64,7 +64,7 @@
 	<center><h1>Search History</h1></center>
 	<% @searches.each do |search| %>
 	  <ul style="font-size:13px">
-	    <h2><li><%= search.text.split(/\s+/, 11)[0...10].join(' ') + "..." %></li></h2>
+	    <h2><li><%= search.text.split(/\s+/, 11)[0...10].join(' ') %></li></h2>
 	  </ul>
 	  <% end %>
 	  <% if @searches.size == 0 %>

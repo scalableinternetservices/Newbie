@@ -15,6 +15,10 @@ class SearchesController < ApplicationController
   # GET /searches/1.json
   def show
     @user = current_user
+    @search = Search.find(params[:id])
+    # GET similar URLS FOR THIS SEARCH
+    results = get_results(@search.text)
+    @urls = results["urls"]
   end
 
   # GET /searches/new
