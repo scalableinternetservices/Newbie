@@ -15,9 +15,12 @@
 <div onclick="myFunction(this)" class="heart"></div>
 <br>
 
-<span>
-  <p style="text-align:center; font-weight:bold;">Similar Articles:</p>
-</span>
+
+<% if !@similar_articles.nil? %>
+  <span>
+    <p style="text-align:center; font-weight:bold;">Similar Articles:</p>
+  </span>
+<% else %>
 
 <div class="card kard" style="width: 20rem; text-align:center;">
   <% if @similar_articles.nil? %>
@@ -26,6 +29,7 @@
     <%  @similar_articles.each do |url, score|  %>
       <div style="float:left;">
         <%= score %>
+        <span class="divider"></span>
         <%= link_to url[0..20], url, :title => "Similar article"  %>
       </div>
     <% end %>
