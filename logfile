@@ -1,0 +1,9 @@
+2019-11-18 20:48:41.120 PST [93621] LOG:  listening on IPv6 address "::1", port 5432
+2019-11-18 20:48:41.120 PST [93621] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-11-18 20:48:41.121 PST [93621] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-11-18 20:48:41.132 PST [93622] LOG:  database system was shut down at 2019-11-18 20:48:21 PST
+2019-11-18 20:48:41.135 PST [93621] LOG:  database system is ready to accept connections
+2019-11-18 20:49:00.996 PST [93663] FATAL:  database "my_db_postgres" does not exist
+2019-11-18 23:35:46.389 PST [96619] FATAL:  database "my_db_postgres" does not exist
+2019-11-18 23:35:53.333 PST [96650] FATAL:  database "my_db_postgres" does not exist
+2019-11-18 23:36:30.818 PST [96830] FATAL:  database "my_db_postgres" does not exist

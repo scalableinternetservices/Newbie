@@ -88,6 +88,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.9.0)
     execjs (2.7.0)
+    faker (2.7.0)
+      i18n (>= 1.6, < 1.8)
     faraday (0.15.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
@@ -244,6 +246,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise (= 4.7.1)
+  faker
   gravatar_image_tag (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails

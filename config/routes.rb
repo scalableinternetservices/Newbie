@@ -9,6 +9,12 @@ Rails.application.routes.draw do
     resources :searches
   end
 
+  resources :users do 
+    member do 
+      get :following, :followers 
+    end 
+  end
+
 
   root 'searches#index'
 
