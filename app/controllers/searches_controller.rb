@@ -174,7 +174,14 @@ class SearchesController < ApplicationController
       return 'washingtonpost' if url.include? 'washingtonpost'
       return 'wsj' if url.include? 'wsj'
       return 'nytimes' if url.include? 'nytimes'
-      url.split('www.')[1].split('.')[0]
+      puts(url)
+      if url.split('www.')[1].nil?
+        x = url.split('.com')[0].split('.')[1]
+        return x if not x.nil?
+        url.split('.com')[0].split('http://')[1]
+      else
+        url.split('www.')[1].split('.')[0]
+      end
     end
 
     def get_publication_score(url)
