@@ -4,20 +4,22 @@ Rails.application.routes.draw do
   #get '/searches', to: 'searches#index', as: 'search'
 
   devise_for :users
+  resources :users
 
   resources :users do
     resources :searches
   end
 
-  resources :users do 
-    member do 
-      get :following, :followers 
-    end 
+  resources :users do
+    member do
+      get :following, :followers
+    end
   end
 
+  # routes for user relationships
+  resources :relationships, only: [:create, :destroy]
 
   root 'searches#index'
-
   get 'users/:id', to: 'searches#index'
 
   #get 'users', to:

@@ -82,3 +82,6 @@ gem 'gravatar_image_tag', '~> 1.2'
 
 gem "pg_search"
 gem "jsonl"
+
+gem 'will_paginate', '3.1.8'
+gem 'bootstrap-will_paginate', '1.0.0'

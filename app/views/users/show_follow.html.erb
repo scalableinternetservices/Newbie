@@ -1,4 +1,4 @@
-<% provide(:title, @user.user_name) %>
+<% provide(:title, @title) %>
 <div class="d-md-flex h-md-100 align-items-center">
 
 <!-- First Half -->
@@ -18,7 +18,7 @@
 
                     <div class="profile-user-settings">
                     	<h1 class="profile-user-name"><%= @user.user_name %></h1>
-                    	<button class="btn profile-edit-btn"><%= link_to "Edit Profile", edit_user_registration_path %></button>
+                            <span><%= link_to "view my profile", @user %></span>
                     </div>
                     <!-- End of profile-user-settings -->
                 </section>
@@ -27,7 +27,6 @@
             	       <%= render 'users/shared/profile' %>
                 </section>
                 <!-- End of stats section -->
-                <%= render 'users/shared/follow_form' if user_signed_in? %>
 			</div>
         </div>
     </div>
@@ -35,20 +34,28 @@
 
 <!-- Second Half -->
 
-<div class="col-sm-8 p-0 h-md-100 searches">
+<div class="col-sm-8 p-0 h-md-100">
     <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
-    	<section class="c-posts">
-	        <center><h1>Search History</h1></center>
-            <% @searches.each do |search| %>
+        <section class="show-follow">
+	        <center><h1><%= @title %></h1></center>
+            <% if @users.any? %>
+            <% @users.each do |user| %>
                 <ul style="font-size:13px">
-            	       <h2><li><%= search.text.split(/\s+/, 11)[0...10].join(' ') %></li></h2>
-            	</ul>
+
+                    <li>
+                        <% if user.avatar.attached? %>
+                            <img src="<%=(url_for(user.avatar))%>" class="rounded-circle" style="width:50px;height:50px">
+                        <% else %>
+                            <%= image_tag("user-icon.jp2", size:"50x50", class: "rounded-circle") %>
+                    <% end %>
+                        <%= link_to user.user_name, user_path(user.id) %>
+                    </li>
+                </ul>
             <% end %>
-            <% if @searches.size == 0 %>
-                <p>You haven't searched anything yet.</p>
+            <%= will_paginate(@users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center') %>
             <% end %>
         </section>
-    </div>
 
+    </div>
 </div>
 </div>

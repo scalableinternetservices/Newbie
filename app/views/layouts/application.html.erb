@@ -228,15 +228,15 @@
         <span style="width:25px;"></span>
         <span style="width:50px; font-family:verdana; color:white">
           <% if current_user %>
-             <%= link_to current_user.user_name, users_show_path(current_user.id), {:style => 'color:white;'} %>
+             <%= link_to current_user.user_name, current_user, {:style => 'color:white;'} %>
           <% end %>
         </span>
         <span style="width:45px;"></span>
         <span style="width:40px;">
           <% if current_user.avatar.attached? %>
-            <a href="/users/show(.:format)" data-toggle="tooltip" :title=<% current_user.user_name %>><img src="<%=(url_for(current_user.avatar))%>" class="rounded-circle" style="width:40px;height:40px;"></a>
+            <%= link_to url_for(current_user.avatar), @user %>
           <% else %>
-            <a href="/users/show(.:format)"><%= image_tag("user-icon.jp2", size:"40x40", class: "rounded-circle") %></a>
+            <%= link_to image_tag("user-icon.jp2", size:"40x40", class: "rounded-circle") , current_user %>
           <% end %>
         </span>
 
