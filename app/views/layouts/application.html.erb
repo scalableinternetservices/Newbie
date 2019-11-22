@@ -234,7 +234,7 @@
         <span style="width:45px;"></span>
         <span style="width:40px;">
           <% if current_user.avatar.attached? %>
-            <%= link_to url_for(current_user.avatar), @user %>
+            <%= link_to image_tag(url_for(current_user.avatar), size:"40x40", class: "rounded-circle"), @user %>
           <% else %>
             <%= link_to image_tag("user-icon.jp2", size:"40x40", class: "rounded-circle") , current_user %>
           <% end %>

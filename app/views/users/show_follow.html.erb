@@ -40,14 +40,13 @@
 	        <center><h1><%= @title %></h1></center>
             <% if @users.any? %>
             <% @users.each do |user| %>
-                <ul style="font-size:13px">
-
+                <ul style="font-size:13px; list-style: none">
                     <li>
                         <% if user.avatar.attached? %>
                             <img src="<%=(url_for(user.avatar))%>" class="rounded-circle" style="width:50px;height:50px">
                         <% else %>
                             <%= image_tag("user-icon.jp2", size:"50x50", class: "rounded-circle") %>
-                    <% end %>
+                        <% end %>
                         <%= link_to user.user_name, user_path(user.id) %>
                     </li>
                 </ul>

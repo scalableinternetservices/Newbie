@@ -39,11 +39,11 @@
     <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
     	<section class="c-posts">
 	        <center><h1>Search History</h1></center>
+            <ol style="font-size:17px">
             <% @searches.each do |search| %>
-                <ul style="font-size:13px">
-            	       <h2><li><%= search.text.split(/\s+/, 11)[0...10].join(' ') %></li></h2>
-            	</ul>
+                <p><li><%= search.text.split(/\s+/, 11)[0...10].join(' ') %></li></p>
             <% end %>
+            </ol>
             <% if @searches.size == 0 %>
                 <p>You haven't searched anything yet.</p>
             <% end %>
