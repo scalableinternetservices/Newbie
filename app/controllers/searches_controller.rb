@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   #these actions wont need login
   #skip_before_action :require_login, only: [:new, :create, :index]
