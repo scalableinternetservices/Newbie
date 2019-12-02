@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   #these actions wont need login
   #skip_before_action :require_login, only: [:new, :create, :index]
@@ -23,11 +24,17 @@ class SearchesController < ApplicationController
     @searche_ids = results["matching_ids"]
 
     #get scores first
-    @scores = []
+    # To reduce load on db, I edited the search function
+    # to return these scores at once, rather than doing
+    # multiple calls
+    @scores = results["matching_scores"]
+
+=begin
     @searche_ids.each do |id|
-       results = get_results(Article.find(id).body)
+       # results = get_results(Article.find(id).body)
        @scores << results["score"]
     end
+=end
 
     #connect the urls with its corresponding score
     @similar_articles = {}
@@ -73,7 +80,7 @@ class SearchesController < ApplicationController
 
     # GET SCORE FOR THIS SEARCH
     results = get_results(@search.text)
-    @search.score = results["score"]
+    @search.score = results["final_score"]
     @urls = results["urls"]
     # results["matching_ids"]
 
@@ -137,10 +144,13 @@ class SearchesController < ApplicationController
       counter = 0
       matching_ids = []
       matching_urls = []
+      matching_scores = []
       for article in matching_articles do
+        break if matching_urls.count > 25
         next if article.pg_search_rank < 0.4
         publication_score = get_publication_score(article.url)
         total_score += article.pg_search_rank * publication_score
+        matching_scores.append(article.pg_search_rank * publication_score * 100)
         counter += 1
         matching_ids.append(article.id)
         matching_urls.append(article.url)
@@ -149,9 +159,10 @@ class SearchesController < ApplicationController
 
       saver = 0
       saver = total_score / counter if counter != 0
-      results["score"] = saver * 100
+      results["final_score"] = saver * 100
       results["matching_ids"] = matching_ids
       results["urls"] = matching_urls
+      results["matching_scores"] = matching_scores
       results
     end
 
@@ -160,7 +171,18 @@ class SearchesController < ApplicationController
         puts("URL NOT PARSABLE")
         return "unknown"
       end
-      url.split('www.')[1].split('.')[0]
+      return 'usatoday' if url.include? 'usatoday'
+      return 'washingtonpost' if url.include? 'washingtonpost'
+      return 'wsj' if url.include? 'wsj'
+      return 'nytimes' if url.include? 'nytimes'
+      puts(url)
+      if url.split('www.')[1].nil?
+        x = url.split('.com')[0].split('.')[1]
+        return x if not x.nil?
+        url.split('.com')[0].split('http://')[1]
+      else
+        url.split('www.')[1].split('.')[0]
+      end
     end
 
     def get_publication_score(url)
@@ -197,7 +219,7 @@ class SearchesController < ApplicationController
         "cnbc": 0.71,
         "buzzfeed": 0.11,
         "aljazeera": 0.75,
-        "chicagotribune": 0.67
+        "chicagotribune": 0.67,
       }
     end
 
