@@ -17,6 +17,7 @@
       <% end %>
     </tbody>
   </table>
+  <%= will_paginate(@users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center') %>
 </div>
 
 <br>
