@@ -221,6 +221,10 @@
           <% end %>
         </ul>
 
+      <span>
+        <%= link_to 'All Users', 'users/index', {:style => 'color:white;'} %>
+      </span>
+
       <% if user_signed_in? %>
         <span class="close text-white" aria-label="Close" data-toggle="tooltip" title="log out?" >
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, style: 'color:white; font-weight:normal; font-size: 17px;'%>
