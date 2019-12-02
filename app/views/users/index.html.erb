@@ -11,7 +11,7 @@
       <% @users.each do |user| %>
         <tr>
           <td style="padding: 10px; text-align:center; font-weight:bold;" class="align-middle">
-            <%= link_to user.user_name, current_user, {:style => 'color:black'} %>
+            <%= link_to user.user_name, user_path(user.id), {:style => 'color:black'} %>
           </td>
         </tr>
       <% end %>
