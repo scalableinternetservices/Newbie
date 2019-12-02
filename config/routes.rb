@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   #get 'users', to:
 
+  get 'users/index', to: 'users#index'
+
   get 'users/show'
 
   get 'welcome/index'
