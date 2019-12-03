@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
-	def team
+	
+  skip_before_action :verify_authenticity_token
+	
+  def team
     render html: "TEAM NEWBIE: A credibility checker for news articles"
   end
 
