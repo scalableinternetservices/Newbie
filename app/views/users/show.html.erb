@@ -18,7 +18,9 @@
 
                     <div class="profile-user-settings">
                     	<h1 class="profile-user-name"><%= @user.user_name %></h1>
+                        <% if @user == current_user %>
                     	<button class="btn profile-edit-btn"><%= link_to "Edit Profile", edit_user_registration_path %></button>
+                        <% end %>
                     </div>
                     <!-- End of profile-user-settings -->
                 </section>
@@ -45,7 +47,11 @@
             <% end %>
             </ol>
             <% if @searches.size == 0 %>
+                <% if @user == current_user %>
                 <p>You haven't searched anything yet.</p>
+                <% else %>
+                <p><%= @user.user_name %> haven't searched anything yet.</p>
+                <% end %>
             <% end %>
         </section>
     </div>
