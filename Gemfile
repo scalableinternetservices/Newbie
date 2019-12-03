@@ -24,9 +24,14 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bootstrap-sass', '~>3.4.1'
 
+# for memchaced
+gem 'dalli'
+
+# action caching
+gem 'actionpack-action_caching'
 
 #For text NLP
-gem "monkeylearn", "~> 3"
+#gem "monkeylearn", "~> 3"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

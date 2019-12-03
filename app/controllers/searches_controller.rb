@@ -2,6 +2,8 @@ class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
 
+  caches_action :index, :show
+
   #these actions wont need login
   #skip_before_action :require_login, only: [:new, :create, :index]
 
@@ -9,7 +11,7 @@ class SearchesController < ApplicationController
   # GET /searches.json
   def index
     @user = current_user
-    @searches = Search.all
+    @searches = Search.all_cached
   end
 
   # GET /searches/1
@@ -102,6 +104,8 @@ class SearchesController < ApplicationController
   # PATCH/PUT /searches/1
   # PATCH/PUT /searches/1.json
   def update
+    expire_action :action => :index
+    expire_action :action => :show
     respond_to do |format|
       if @search.update(search_params)
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }
@@ -116,6 +120,8 @@ class SearchesController < ApplicationController
   # DELETE /searches/1
   # DELETE /searches/1.json
   def destroy
+    expire_action :action => :index
+    expire_action :action => :show
     @search.destroy
     respond_to do |format|
       format.html { redirect_to searches_url, notice: 'Search was successfully destroyed.' }

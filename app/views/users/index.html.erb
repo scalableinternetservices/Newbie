@@ -9,11 +9,13 @@
 
     <tbody>
       <% @users.each do |user| %>
+        <% cache user do %>
         <tr>
           <td style="padding: 10px; text-align:center; font-weight:bold;" class="align-middle">
             <%= link_to user.user_name, user_path(user.id), {:style => 'color:black'} %>
           </td>
         </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

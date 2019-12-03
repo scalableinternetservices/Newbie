@@ -23,6 +23,7 @@
       <% topfive = @searches.count < 5 ? @searches.count : 5 %>
       <!-- < % sorted_search.each do |search| %> -->
       <% topfive.times do |i| %>
+        <% cache i do %>
         <tr>
           <td style="padding: 10px; text-align:center; font-weight:bold;" class="align-middle">
             <%= sorted_search[i].score %>
@@ -38,6 +39,7 @@
         <td>< %= link_to 'Edit', edit_search_path(search) %></td>
         <td>< %= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         -->
+        <% end %>
         </tr>
       <% end %>
     </tbody>

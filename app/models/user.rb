@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  after_save    :expire_user_all_cache
+  after_destroy :expire_user_all_cache
+
   has_many :searches
 
   has_many :active_relationships,
@@ -31,5 +34,15 @@ class User < ApplicationRecord
   # Returns true if the current user is following the other user.
   def following?(other_user)
   	following.include?(other_user)
+  end
+
+  # caching
+  def self.all_cached
+    Rails.cache.fetch('User.all') { all.to_a }
+  end
+
+  # expire cache
+  def expire_user_all_cache
+    Rails.cache.delete('User.all')
   end
 end
