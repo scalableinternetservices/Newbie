@@ -23,7 +23,6 @@ test:
   database: my_db_postgres_test
 
 production:
-  adapter: postgresql
   database: <%= ENV['RDS_DB_NAME'] %>
 
   makara:
