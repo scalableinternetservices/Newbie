@@ -41,6 +41,11 @@ class User < ApplicationRecord
     Rails.cache.fetch('User.all') { all.to_a }
   end
 
+  #user search history caching
+  def self.searches_cached
+    Rails.cache.fetch('User.searches') { User.find(params[:id]).searches.to_a }
+  end
+
   # expire cache
   def expire_user_all_cache
     Rails.cache.delete('User.all')

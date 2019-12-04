@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def show
   	# @user = current_user
     @user = User.find(params[:id])
-    @searches = @user.searches
+    #@searches = @user.searches
+    @searches = @user.searches_cached
   end
 
   def following
