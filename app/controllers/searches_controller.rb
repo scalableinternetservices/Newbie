@@ -11,7 +11,8 @@ class SearchesController < ApplicationController
   # GET /searches.json
   def index
     @user = current_user
-    @searches = Search.all_cached
+    #@searches = Search.all_cached
+    @searches = Search.all
   end
 
   # GET /searches/1
