@@ -144,6 +144,7 @@ class SearchesController < ApplicationController
     end
 
     def get_results(search_text)
+      DistributeReads.by_default = true
       results = {}
       matching_articles = Article.search(search_text).with_pg_search_rank
       total_score = 0
