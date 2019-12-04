@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  #after_save    :expire_user_all_cache
-  #after_destroy :expire_user_all_cache
+  after_save    :expire_user_all_cache
+  after_destroy :expire_user_all_cache
 
   has_many :searches
 

@@ -9,17 +9,17 @@
 
     <tbody>
       <% @users.each do |user| %>
-        <% #cache user do %>
+        <% cache user do %>
         <tr>
           <td style="padding: 10px; text-align:center; font-weight:bold;" class="align-middle">
             <%= link_to user.user_name, user_path(user.id), {:style => 'color:black'} %>
           </td>
         </tr>
-        <% #end %>
+        <% end %>
       <% end %>
     </tbody>
   </table>
-  <%= will_paginate(@users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center') %>
+  <%= #will_paginate(@users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center') %>
 </div>
 
 <br>
