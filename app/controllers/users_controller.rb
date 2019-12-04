@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  caches_action :show, :index
+  #caches_action :show, :index
 
   def index
     @users = User.all
