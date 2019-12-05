@@ -1,6 +1,6 @@
 class Search < ApplicationRecord
-  #after_save    :expire_search_all_cache
-  #after_destroy :expire_search_all_cache
+  after_save    :expire_search_all_cache
+  after_destroy :expire_search_all_cache
 
   belongs_to :user, optional: true
   validates :text, presence: true

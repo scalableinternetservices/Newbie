@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   caches_action :show, :index
 
   def index
-    @users = User.all
+    @users = User.all_cached
     #@users = @users.paginate(page: params[:page], per_page: 7)
     #render 'index'
   end
