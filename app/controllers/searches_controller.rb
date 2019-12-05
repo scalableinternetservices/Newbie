@@ -154,8 +154,8 @@ class SearchesController < ApplicationController
       matching_urls = []
       matching_scores = []
       for article in matching_articles do
-        break if matching_urls.count > 25
         next if article.pg_search_rank < 0.4
+        break if matching_urls.count > 25
         publication_score = get_publication_score(article.url)
         total_score += article.pg_search_rank * publication_score
         matching_scores.append(article.pg_search_rank * publication_score * 100)
@@ -163,11 +163,22 @@ class SearchesController < ApplicationController
         matching_ids.append(article.id)
         matching_urls.append(article.url)
       end
-      puts(matching_ids)
 
+      # COMPUTE FINAL SCORE
+      # Start with picking the maximum score out of all matching scores.
+      # For every subsequent score, divide it by 70 and add it to final_score.
+      # Cap value of final_score to 99.
       saver = 0
-      saver = total_score / counter if counter != 0
-      results["final_score"] = saver * 100
+      sorted_scores = matching_scores.sort.reverse
+      for score in sorted_scores do
+        if saver == 0 then
+          saver = score
+        else
+          saver = saver + score / 70
+        end
+      end
+      results["final_score"] = [saver, 99].min
+
       results["matching_ids"] = matching_ids
       results["urls"] = matching_urls
       results["matching_scores"] = matching_scores
@@ -183,6 +194,7 @@ class SearchesController < ApplicationController
       return 'washingtonpost' if url.include? 'washingtonpost'
       return 'wsj' if url.include? 'wsj'
       return 'nytimes' if url.include? 'nytimes'
+      return 'aol' if url.include? 'aol'
       puts(url)
       if url.split('www.')[1].nil?
         x = url.split('.com')[0].split('.')[1]
@@ -202,6 +214,7 @@ class SearchesController < ApplicationController
 
     def get_publication_score_mapping()
       {
+        "aol": 0.61,
         "wsj": 0.81,
         "nytimes": 0.78,
         "bloomberg": 0.8,
