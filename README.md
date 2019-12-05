@@ -1,7 +1,8 @@
 # README
 
-NEWBIE
+NEWBIE - 
 A Credibility Checker For News Articles
+
 
 
 Team Members:-
@@ -13,6 +14,7 @@ Shashwat Goel
 Weilan Yu 
 
 Zhenhua Tan
+
 
 
 Fake News has become one of the most important problems of the 21st century. It not only makes people believe false things, but also diverges their attention away from the actual real world news. Making people vulnerable and susceptible to false information, Fake News and the spread of misinformation weakens our society. 
