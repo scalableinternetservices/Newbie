@@ -4,10 +4,14 @@ NEWBIE
 A Credibility Checker For News Articles
 
 
-Team Members
+Team Members:-
+
 Rishabh Jain
+
 Shashwat Goel
+
 Weilan Yu 
+
 Zhenhua Tan
 
 
